@@ -25,6 +25,7 @@
     <!-- JavaScript -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script type="text/javascript">
     angular.module('todoApp', [])
       .controller('TodoListController', function() {
@@ -56,43 +57,93 @@
   </head>
   <body>
     <div class="container"><br>
-      
-      <article class="message is-info">
-        <div class="message-header">
-          <p>The "ToDo" List</p>
-        </div>
-        <div class="message-body">
-          The <b>Grocery list</b> was created by <a href="http://srodriguez.xyz">Sebastian Rodriguez</a> as a final project for his Introduction to Computer Science (IV) course. This "ToDo" list was created by combining a tutorial from Google's <a href="https://angularjs.org/">Angular JS</a> and the <a href="http://bulma.io/">Bulma CSS</a> framework. View this peoject on <a href="#">GitHub</a>.
-        </div>
-      </article>
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <nav class="panel">
+            <p class="panel-heading">
+              Projects
+            </p>
+            <a class="panel-block" href="/browning/page_one">
+              <span class="panel-icon">
+                <i class="fa fa-code-fork"></i>
+              </span>
+              Moving Triangles
+            </a>
+            <a class="panel-block" href="/browning/page_two">
+              <span class="panel-icon">
+                <i class="fa fa-code-fork"></i>
+              </span>
+              The Equalizer
+            </a>
+            <a class="panel-block" href="/browning/page_three">
+              <span class="panel-icon">
+                <i class="fa fa-code-fork"></i>
+              </span>
+              Intersecting Bubbles
+            </a>
+            <a class="panel-block" href="/browning/page_four">
+              <span class="panel-icon">
+                <i class="fa fa-code-fork"></i>
+              </span>
+              Transformers
+            </a>
+            <a class="panel-block is-active" href="/browning/grocery-list">
+              <span class="panel-icon">
+                <i class="fa fa-code-fork"></i>
+              </span>
+              Grocery List
+            </a>
+          </nav>
 
-      <div ng-controller="TodoListController as todoList" class="card">
-        <div class="card-content">
-          <h1 class="title">Grocery List</h1>
-          <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
-          [ <a href="" ng-click="todoList.archive()">delete</a> ]
-          <ul class="unstyled">
-            <li ng-repeat="todo in todoList.todos">
-              <label class="checkbox">
-                <input type="checkbox" ng-model="todo.done">
-                <span class="done-{{todo.done}}">{{todo.text}}</span>
-              </label>
-            </li>
-          </ul>
-          <br>
-          <form ng-submit="todoList.addTodo()">
-            <div class="field has-addons">
-             <p class="control">
-               <input class="input" type="text" placeholder="Add another item" ng-model="todoList.todoText">
-             </p>
-             <p class="control">
-               <input class="button" type="submit" value="Add">
-             </p>
-           </div>
-          </form>
+          <center>
+            <a class="github-button" href="https://github.com/seb646/grocery-list" data-size="large" aria-label="View seb646/grocery-list on GitHub">Source</a>
+            <a class="github-button" href="https://github.com/seb646/grocery-list/archive/master.zip" data-size="large" data-icon="octicon-cloud-download" aria-label="Download seb646/grocery-list on GitHub">Download</a>
+            <a class="github-button" href="https://github.com/seb646/grocery-list/subscription" data-icon="octicon-eye" data-size="large" data-show-count="true" aria-label="Watch seb646/grocery-list on GitHub">Watch</a>
+          </center>
+
         </div>
+
+        <div class="column">
+          <article class="message is-info">
+            <div class="message-header">
+              <p>The "ToDo" List</p>
+            </div>
+            <div class="message-body">
+              The <b>Grocery list</b> was created by <a href="http://srodriguez.xyz">Sebastian Rodriguez</a> as a final project for his Introduction to Computer Science (IV) course. This "ToDo" list was created by combining a tutorial from Google's <a href="https://angularjs.org/">Angular JS</a> and the <a href="http://bulma.io/">Bulma CSS</a> framework.
+            </div>
+          </article>
+
+          <div ng-controller="TodoListController as todoList" class="card">
+            <div class="card-content">
+              <h1 class="title" style="margin-bottom: 0;">Grocery List</h1>
+              <small>{{todoList.remaining()}} of {{todoList.todos.length}} items remaining</small>
+              <br><br>
+              <ul class="unstyled">
+                <li ng-repeat="todo in todoList.todos">
+                  <label class="checkbox">
+                    <input type="checkbox" ng-model="todo.done">
+                    <span class="done-{{todo.done}}">{{todo.text}}</span>
+                  </label>
+                </li>
+              </ul>
+              <br>
+              <form ng-submit="todoList.addTodo()">
+                <div class="field has-addons">
+                 <p class="control">
+                   <input class="input is-success" type="text" placeholder="Add another item" ng-model="todoList.todoText">
+                 </p>
+                 <p class="control">
+                   <input class="button is-success" type="submit" value="Add" style="border-top-right-radius:2px;border-bottom-right-radius:2px;">
+                 </p>
+                 &nbsp; &nbsp;
+                 <a href="" ng-click="todoList.archive()" class="button is-danger">Delete</a>
+               </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
       </div>
-
     </div>
   </body>
 </html>
